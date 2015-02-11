@@ -11,4 +11,6 @@ with .jpg emojis
 with .png emojis - the .png's have a transparent background so the average color calculation is different.
 ![](http://i.imgur.com/pFMyUkk.jpg)
 
-to switch file types, edit the FILE_TYPE variable in emojicam.js and average-color.rb to either 'jpg' or 'png'
+to switch file types, edit the FILE_TYPE variable in emojicam.js and average-color.rb to either 'jpg' or 'png' and rerun average-color.rb (to regenerate emoji-colors.js)
+
+use ```python -m SimpleHTTPServer``` to run locally.

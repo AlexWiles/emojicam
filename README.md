@@ -1,16 +1,21 @@
 # emojicam
-render video from your webcam with emojis
+render image data with emojis
 
 built with [p5.js](http://p5js.org/)
 
 ----
 
-with .jpg emojis
+##syntax
+#####``` drawEmojis(imageData, pixelSize, originX, originY)```
+##parameters
+`imageData` image or video <br />
+`pixelSize` emoji dimension <br />
+`originX, originY` where on the canvas to start drawing emojis
+
+using .jpg emojis to calculate average color
 ![](http://i.imgur.com/omBUGSb.png)
 
-with .png emojis - the .png's have a transparent background so the average color calculation is different.
+.png's have a transparent background so the average color calculation is different.
 ![](http://i.imgur.com/pFMyUkk.jpg)
-
-to switch file types, edit the FILE_TYPE variable in emojicam.js and average-color.rb to either 'jpg' or 'png' and rerun average-color.rb (to regenerate emoji-colors.js)
 
 use ```python -m SimpleHTTPServer``` to run locally.

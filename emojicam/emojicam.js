@@ -4,12 +4,11 @@ function setupEmojis() {
 }
 
 function drawEmojis(imageData, pixelSize, originX, originY){
-  imageData.loadPixels();
   var i;
-  for (var y=0; y<imageData.height; y+=pixelSize) {
-    for (var x=0; x<imageData.width; x+=pixelSize) {
-      i = (y * width + x)*4;
-      emoji = closestEmoji(imageData.pixels[i], imageData.pixels[i+1], imageData.pixels[i+2]);
+  imageData.loadPixels();
+  for (var y=0; y<=imageData.height-pixelSize; y+=pixelSize) {
+    for (var x=0; x<=imageData.width-pixelSize; x+=pixelSize) {
+      emoji = closestEmoji(x, y, pixelSize, imageData);
       image(emoji, originX + x, originY + y, pixelSize, pixelSize);
     }
   }
@@ -32,18 +31,25 @@ function emojiPoints(){
     c = emojiColors[i];
     r = parseInt("0x"+c.substr(1,2));
     g = parseInt("0x"+c.substr(3,2));
-    b = parseInt("0x"+c.substr(3,2));
+    b = parseInt("0x"+c.substr(5,2));
     pointArray.push([r, g, b, c]);
   }
   return pointArray;
 }
 
-var closestEmoji = function(r, g, b) {
+function averageColor(x, y, pixelSize, imageData) {
+  var half_width = Math.floor(pixelSize/2)
+  i = ((y+half_width)*imageData.width+(x+half_width))*4;
+  return [imageData.pixels[i], imageData.pixels[i+1], imageData.pixels[i+2]];
+}
+
+var closestEmoji = function(x, y, pixelSize, imageData) {
+  color = averageColor(x,y, pixelSize, imageData);
   var distance = 99999999;
   var c, d, p;
   for (var i=0; i<emojiInts.length; i++){
     p = emojiInts[i];
-    d = Math.sqrt( Math.pow((r-p[0]), 2) + Math.pow((g-p[1]), 2) + Math.pow((b-p[2]), 2) );
+    d = Math.sqrt( Math.pow((color[0]-p[0]), 2) + Math.pow((color[1]-p[1]), 2) + Math.pow((color[2]-p[2]), 2) );
     if (d < distance){
       distance = d;
       c = p[3];

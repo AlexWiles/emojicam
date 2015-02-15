@@ -1,0 +1,45 @@
+body {
+  background-image: url("emojicam/emojis-png/0701.png");
+  background-size: 20px 20px;
+  font-family: "Helvetica";
+  height: 100%;
+}
+
+.wrapper {
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 800px;
+    background-color: white;
+
+}
+
+.control {
+  position:absolute;
+  bottom:15px;
+  right:15px;
+}
+
+#camera {
+  width: 50px;
+  height: 50px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#pixelSize {
+  position: relative;
+  top: 4px;
+}
+
+#takePic {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+    width: 800px;
+
+}

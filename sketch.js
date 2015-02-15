@@ -1,14 +1,28 @@
 var capture;
+var canvas;
 
 function setup() {
   setupEmojis();
-  createCanvas(700, 500);
+  w = 800;
+  h = 600;
+  canvas = createCanvas(w, h);
+  canvas.parent('canvasCont');
   capture = createCapture(VIDEO);
-  capture.size(700, 500);
+  capture.size(w, h);
   capture.hide();
+
+  document.getElementById('camera').onclick = function() { save(); };
 }
 
 function draw() {
   background(255);
-  drawEmojis(capture, 8, 0, 0);
+
+  pixelSize = parseInt(document.getElementById("pixelSize").value);
+  w = Math.floor(capture.width/pixelSize) * pixelSize;
+  h = Math.floor(capture.height/pixelSize) * pixelSize;
+  canvas.size(w, h);
+  document.getElementById('wrapper').style.width = w + "px";
+
+  drawEmojis(capture, pixelSize, 0, 0);
 }
+

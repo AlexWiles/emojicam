@@ -1,5 +1,7 @@
-# emojicam [emojibooth.biz](http://emojibooth.biz/)
+# [emojibooth.biz](http://emojibooth.biz/)
 render image data with emojis
+
+(use chrome pls)
 
 built with [p5.js](http://p5js.org/)
 

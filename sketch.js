@@ -10,7 +10,6 @@ function setup() {
   capture = createCapture(VIDEO);
   capture.size(w, h);
   capture.hide();
-
   document.getElementById('camera').onclick = function() { save(); };
 }
 
@@ -20,7 +19,7 @@ function draw() {
   pixelSize = parseInt(document.getElementById("pixelSize").value);
   w = Math.floor(capture.width/pixelSize) * pixelSize;
   h = Math.floor(capture.height/pixelSize) * pixelSize;
-  canvas.size(w, h);
+  //canvas.size(w, h);
   document.getElementById('wrapper').style.width = w + "px";
 
   drawEmojis(capture, pixelSize, 0, 0);
